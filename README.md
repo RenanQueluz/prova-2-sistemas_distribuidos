@@ -22,6 +22,42 @@ a função esta colocando as replicas duas vezes
 evidencia 4
 
 
+antes:
+def consultar_estoque():
+    if principal["online"]:
+        return(
+            "PRINCIPAL",
+            principal["estoque"]
+        )
+
+    if principal["online"]:
+        return(
+            "REPLICA",
+            replica["estoque"]
+        )
+
+    return "INDISPONIVEL", None
+
+depois:
+def consultar_estoque():
+    if principal["online"]:
+        return(
+            "PRINCIPAL",
+            principal["estoque"]
+        )
+
+    if replica["online"]:
+        return(
+            "REPLICA",
+            replica["estoque"]
+        )
+
+    return "INDISPONIVEL", None
+as duas condicionais estavam repetida 
+
+
+
+
 
 
 
